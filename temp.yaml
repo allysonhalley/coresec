@@ -1,0 +1,15 @@
+coresec-api:
+  build:
+    context: .
+    dockerfile: Dockerfile
+  ports:
+    - '8081:8080'
+  environment:
+    - SPRING_DATASOURCE_url=jdbc:postgresql://coresec_postgres:5432/coresecdb
+    - SPRING_DATASOURCE_USERNAME=admin
+    - SPRING_DATASOURCE_PASSWORD=keypass
+  depends_on:
+    - coresec-postgres
+  networks:
+    coresec-net:
+  restart: on-failure

@@ -1,0 +1,19 @@
+services:
+  coresec-postgres:
+    image: 'postgres:latest'
+    container_name: coresec_postgres
+    environment:
+      - POSTGRES_DB=coresecdb
+      - POSTGRES_PASSWORD=keypass
+      - POSTGRES_USER=admin
+    ports:
+      - 5433:5432
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+    networks:
+      coresec-net:
+volumes:
+  coresec-db:
+
+networks:
+  coresec-net:
